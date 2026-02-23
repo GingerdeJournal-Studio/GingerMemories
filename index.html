@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <title>Login / Sign Up</title>
+    <link rel="stylesheet" href="cssFiles/index.css"/>
+    <script type="module" src="auth.js"></script>
+    <link rel="icon" type="svg" href="https://pub-7c8122dd7ae64deeab493bc5ad81ec0d.r2.dev/GingerMemories_Logo/GingerMemories%20Logo.svg">
+
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="GingerMemories">
+            <div class="GingerMemoriesLogo" style="background-image: url('https://pub-7c8122dd7ae64deeab493bc5ad81ec0d.r2.dev/GingerMemories_Logo/GingerMemories%20Logo.svg');"></div>
+            <h1>回忆共镜</h1>
+            <h4>写下你的故事来分享你的感受吧！</h4>
+        </div>
+
+        <div id="login">
+            <p>请输入你的邮箱：</p>
+            <input id="login-email" type="email" placeholder="邮箱" />
+            <p>请输入你的密码：</p>
+            <input id="login-password" type="password" placeholder="密码" />
+            <h5 class="account-switch">还没有有账号?<button onclick="signup()"> 点击创建</button></h5>
+            <button id="login-btn">欢迎回来～</button>
+        </div>
+
+        <div id="signup">
+            <p>请输入你的邮箱：</p>
+            <input id="signup-email" type="email" placeholder="邮箱" />
+            <p>请设置一个密码：</p>
+            <input id="signup-password" type="password" placeholder="密码" />
+            <h5 class="account-switch">已经有账号？<button onclick="login()">点击登陆</button></h5>
+            <button id="signup-btn">开启你的回忆共镜之旅</button>
+        </div>
+        <p id="auth-message"></p>
+    </div>
+</body>
+    <script>
+        function signup() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('signup').style.display = 'block';
+        }
+
+        function login() {
+            document.getElementById('signup').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+        }
+    </script>
+</html>

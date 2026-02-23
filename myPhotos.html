@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="module" src="auth-guard.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="BOTTOM_NAV_BAR/BOTTOM_NAV_BAR.css"/>
+    <title>回忆共镜 - 点亮地图</title>
+    <link rel="icon" type="svg" href="https://pub-7c8122dd7ae64deeab493bc5ad81ec0d.r2.dev/GingerMemories_Logo/GingerMemories%20Logo.svg">
+
+</head>
+<body>
+    <header id="header" class="myPhotos"></header>
+</body>
+    <script type="module">
+        import {loadComponent} from "./include.js";
+        loadComponent("#header", "BOTTOM_NAV_BAR/BOTTOM_NAV_BAR.html");
+    </script>
+</html>

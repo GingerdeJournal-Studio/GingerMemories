@@ -1,0 +1,64 @@
+body {
+    height: 100%;
+    overscroll-behavior: none;
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.auth-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    width: 80%;
+    padding: 24px;
+
+}
+
+.GingerMemories {text-align: center; height: 30vh;}
+.GingerMemoriesLogo {margin: -50px auto 0 auto; width: 200px; height: 200px; background-size: contain;}
+.GingerMemories h1 {font-size: clamp(20px, 5vh, 5rem); color: #112d4e; margin-top: -2px;}
+.GingerMemories h4 {font-size: clamp(12px, 3vh, 0.8rem); margin-top: -24px; color: #21528B;}
+
+#login, #signup {margin-top: 50px;}
+#login p, #signup p {color: #112D4E; font-weight: 500;}
+.account-switch {margin-top: 10px; font-weight: 400;}
+.account-switch button {border: none; background: none; color: #112d4e; font-weight: bold; cursor: pointer;}
+
+#signup {display: none;}
+
+.auth-container input {
+    margin-top: -10px;
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 20px;
+    border: none;
+}
+
+.auth-container input::placeholder {padding-left: 15px;}
+
+.account-switch {font-size: 15px;}
+
+#login-btn, #signup-btn {
+    width: 100%;
+    padding: 15px 0;
+    font-size: 15px;
+    border-radius: 25px;
+    border: none;
+    background: #112d4e;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#login-btn:hover, #signup-btn:hover {scale: 0.98; cursor: pointer}
+
+#auth-message {
+    margin-top: 12px;
+    color: #444;
+    font-size: 14px;
+}

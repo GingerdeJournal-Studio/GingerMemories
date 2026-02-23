@@ -1,0 +1,39 @@
+.homePageHeader {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    background: #112d4e;
+    top: 0;
+}
+
+.homePageHeaderSection {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+    height: 100%;
+}
+
+.homePageHeaderSection button {
+    list-style: none;
+    color: white;
+    font-size: 20px;
+    transition: 0.3s;
+    background: none;
+    border: none;
+}
+
+#index {border-bottom: 3px solid white;}
+#sub {opacity: 0.7}
+
+#index:hover, #sub:hover {opacity: 1; border-bottom: 3px solid white;}
+
+.contentBox {
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+#subPage, #indexPage {width: 100%; height: 100vh; background: yellow; transition: 0.3s;}
+#subPage {margin-left: -100%; background: green;}
