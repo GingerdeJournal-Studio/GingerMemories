@@ -1,64 +1,97 @@
-body {
-    height: 100%;
-    overscroll-behavior: none;
-    font-family: Arial, sans-serif;
-    background: #f7f7f7;
-    display: flex;
-    justify-content: center;
-    padding-top: 80px;
+* {
+    transition: 0.5s;
 }
 
-.auth-container {
-    position: relative;
+body {
+    margin: 0;
+    padding: 0;
+    background: #ECF2FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    width: 400px;
+    padding: 32px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     display: flex;
     flex-direction: column;
-    align-self: center;
     justify-content: center;
-    width: 80%;
-    padding: 24px;
-
+    gap: 16px;
 }
 
-.GingerMemories {text-align: center; height: 30vh;}
-.GingerMemoriesLogo {margin: -50px auto 0 auto; width: 200px; height: 200px; background-size: contain;}
-.GingerMemories h1 {font-size: clamp(20px, 5vh, 5rem); color: #112d4e; margin-top: -2px;}
-.GingerMemories h4 {font-size: clamp(12px, 3vh, 0.8rem); margin-top: -24px; color: #21528B;}
-
-#login, #signup {margin-top: 50px;}
-#login p, #signup p {color: #112D4E; font-weight: 500;}
-.account-switch {margin-top: 10px; font-weight: 400;}
-.account-switch button {border: none; background: none; color: #112d4e; font-weight: bold; cursor: pointer;}
-
-#signup {display: none;}
-
-.auth-container input {
-    margin-top: -10px;
-    width: 100%;
-    padding: 15px 0;
-    border-radius: 20px;
-    border: none;
+@media (max-width: 470px)
+{
+    .card {width: 100%; height: 100%;}
 }
 
-.auth-container input::placeholder {padding-left: 15px;}
-
-.account-switch {font-size: 15px;}
-
-#login-btn, #signup-btn {
-    width: 100%;
-    padding: 15px 0;
-    font-size: 15px;
-    border-radius: 25px;
-    border: none;
-    background: #112d4e;
-    color: white;
-    font-weight: bold;
-    transition: 0.3s;
+.logo {
+    margin: 0 auto;
+    background-image: url('https://pub-7c8122dd7ae64deeab493bc5ad81ec0d.r2.dev/GingerMemories_Logo/GingerMemories%20Logo.svg');
+    background-size: cover;
+    width: 120px;
+    height: 120px;
 }
 
-#login-btn:hover, #signup-btn:hover {scale: 0.98; cursor: pointer}
+h1 {
+    margin: -10px 0 8px 0;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    color: #112d4e;
+}
 
-#auth-message {
-    margin-top: 12px;
-    color: #444;
+h3 {
+    margin-top: -25px;
+    text-align: center;
+    font-size: 18px;
+    color: rgba(17, 45, 78, 0.75);
+}
+
+.questions {
     font-size: 14px;
+}
+
+input {
+    margin-top: -24px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.lORr, .loginORregister {
+    font-size: 14px;
+    font-weight: bold;
+    color: #112d4e;
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.lORr {color: black;}
+
+.loginORregister:hover {
+    cursor: pointer;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    scale: 0.98;
+    cursor: pointer;
 }

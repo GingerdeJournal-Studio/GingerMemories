@@ -1,0 +1,109 @@
+body {
+    height: 500vh;
+}
+
+.mobile-header {
+    width: 100%;
+    height: 60px;
+    padding: 20px;
+    position: fixed;
+    z-index: 999;
+    background: none;
+}
+
+.mobile-header.transparent {background: #112d4e;}
+
+/* Hamburger */
+.hamburger {
+    position: fixed;
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 4px;
+    background: white;
+    border-radius: 2px;
+}
+
+.mobile-menu {
+    width: 80%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #112d4e;
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    left: -80%;
+    transition: 0.3s;
+}
+
+.mobile-menu a {
+    background: #14355c;
+    margin: 5px 0;
+    color: white;
+    padding: 15px 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.mobile-menu.active {
+    left: 0;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 5;
+}
+
+.overlay.active {
+   display: block;
+}
+
+.hero {
+    width: 100%;
+    height: 240px;
+    background: #112d4e;
+}
+
+.background-blur {
+    position: absolute;
+    width: 100%;
+    height: 240px;
+    background: black;
+    opacity: 0.4;
+}
+
+.user-info {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 240px;
+}
+
+.user-info-profile {
+    width: 10vh;
+    height: 10vh;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    border: 4px solid white;
+}
+
+.user-info-name {
+    margin-top: 10px;
+    color: white;
+}

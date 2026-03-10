@@ -2,8 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overscroll-behavior: none;
 }
 
+body {background: #ECF2FF;}
 
 header {
     width: 100%;
@@ -36,8 +38,8 @@ header {
 
 .home #atHome {opacity: 1}
 .travelRoutes #atTravelRoutes {opacity: 1}
-.myPhotos #atMyPhotos {opacity: 1}
-.me #atMe {opacity: 1}
+.userMap #atMyPhotos {opacity: 1}
+.user #atMe {opacity: 1}
 
 .icon div {
     width: 50px;
@@ -49,3 +51,6 @@ header {
 
 .icon:hover {cursor: pointer; opacity: 1;}
 
+@media (min-width: 800px) {
+    header {display: none;}
+}

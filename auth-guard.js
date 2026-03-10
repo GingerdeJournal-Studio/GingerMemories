@@ -1,11 +1,9 @@
-import { supabase } from "./supabase-init.js";
+// auth-guard.js
+import { auth } from "./firebase-init.js";
 
-async function requireLogin() {
-    const { data: { user } } = await supabase.auth.getUser();
-
+auth.onAuthStateChanged(user => {
     if (!user) {
-        window.location.href = "index.html"; // 强制回到登录页
+        location.href = "index.html";
     }
-}
+});
 
-requireLogin();

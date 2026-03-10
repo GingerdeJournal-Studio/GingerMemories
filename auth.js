@@ -1,71 +1,93 @@
-import { supabase } from "./supabase-init.js";
+// auth.js
+import { auth, db } from "./firebase-init.js";
 
-// 显示消息
-function showMessage(msg) {
-    document.getElementById("auth-message").innerText = msg;
-}
+import {
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// 注册
-async function signUp(email, password) {
-    const { data, error } = await supabase.auth.signUp({
-        email,
-        password
-    });
+import {
+    doc,
+    setDoc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-    if (error) {
-        showMessage(error.message);
-        return null;
+
+// ----------------------
+// Email 登录
+// ----------------------
+document.getElementById("login-btn").onclick = async () => {
+    const email = document.getElementById("emailLogin").value;
+    const pass = document.getElementById("passwordLogin").value;
+
+    try {
+        await signInWithEmailAndPassword(auth, email, pass);
+        location.href = "/GingerMemories/home.html";
+    } catch (e) {
+        console.error(e);
+        alert("Login failed: " + e.message);
     }
-
-    showMessage("账号创建成功，请您查看邮箱！");
-    return data.user;
-}
-
-// 创建用户资料
-async function createProfile(userId) {
-    const { error } = await supabase.from("profiles").insert({
-        id: userId,
-        nickname: "New User",
-        avatar_url: "",
-        bio: "",
-        city: ""
-    });
-
-    if (error) console.error(error.message);
-}
-
-// 登录
-async function signIn(email, password) {
-    const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password
-    });
-
-    if (error) {
-        showMessage(error.message);
-        return null;
-    }
-
-    showMessage("成功登陆！");
-    return data.user;
-}
-
-// 绑定按钮事件
-document.getElementById("signup-btn").onclick = async () => {
-    const email = document.getElementById("signup-email").value;
-    const password = document.getElementById("signup-password").value;
-
-    const user = await signUp(email, password);
-    if (user) await createProfile(user.id);
 };
 
-document.getElementById("login-btn").onclick = async () => {
-    const email = document.getElementById("login-email").value;
-    const password = document.getElementById("login-password").value;
 
-    const user = await signIn(email, password);
-    if (user) {
-        // 登录成功后跳转
-        window.location.href = "home.html";
+// ----------------------
+// Email 注册
+// ----------------------
+document.getElementById("register-btn").onclick = async () => {
+    const email = document.getElementById("emailRegister").value;
+    const pass = document.getElementById("passwordRegister").value;
+
+    try {
+        const userCred = await createUserWithEmailAndPassword(auth, email, pass);
+
+        await setDoc(doc(db, "users", userCred.user.uid), {
+            uid: userCred.user.uid,
+            email: email,
+            nickname: "New User",
+            avatarUrl: "",
+            coverUrl: "",
+            createdAt: Date.now()
+        });
+
+        location.href = "/GingerMemories/home.html";
+    } catch (e) {
+        console.error(e);
+        alert("Register failed: " + e.message);
+    }
+};
+
+
+// ----------------------
+// Google 登录（最稳定版本）
+// ----------------------
+document.getElementById("google-btn").onclick = async () => {
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: "select_account" });
+
+    try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+
+        if (!userSnap.exists()) {
+            await setDoc(userRef, {
+                uid: user.uid,
+                email: user.email,
+                nickname: user.displayName || "Google User",
+                avatarUrl: user.photoURL || "",
+                coverUrl: "",
+                createdAt: Date.now()
+            });
+        }
+
+        location.href = "home.html";
+
+    } catch (e) {
+        console.error("Google Login Error:", e);
+        alert("Google Login failed: " + e.message);
     }
 };
